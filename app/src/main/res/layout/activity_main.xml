@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="푸드트럭결제시스템"
+                android:text="푸드트럭 간편결제시스템"
                 android:textColor="@color/colorWhite"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -50,9 +50,26 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <Button
-                android:layout_width="100dp"
-                android:layout_height="75dp"
-                android:layout_marginTop="20dp"/>
+                android:id="@+id/switchButton"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="판매자 모드"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="주문 내역"/>
+
         <ListView
             android:layout_weight="1"
             android:id="@+id/orderList"

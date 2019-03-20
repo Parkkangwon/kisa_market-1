@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -16,20 +17,39 @@ import org.json.JSONException;
 import static java.security.AccessController.getContext;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private  Button scanbutton;
+    private Button switchbutton;
     private IntentIntegrator qrScan;
+    private ListView noticeListView;
+    private NoticeListAdapter adapter;
+    private ArrayList<Notice> noticeList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        noticeListView = (ListView) findViewById(R.id.orderList);
+        noticeList=new ArrayList<Notice>();
+        adapter=new NoticeListAdapter(getApplicationContext(),noticeList);
+        noticeListView.setAdapter(adapter);
 
         scanbutton =(Button)findViewById(R.id.scanButton);
+        switchbutton = (Button)findViewById(R.id.switchButton);
         qrScan =new IntentIntegrator(this);
+
         scanbutton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 qrScan.setPrompt("Scanning...");
                 qrScan.initiateScan();
+            }
+        });
+        switchbutton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sellerIntent = new Intent(MainActivity.this,Seller.class);
+                MainActivity.this.startActivity(sellerIntent);
             }
         });
     }
